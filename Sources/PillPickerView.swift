@@ -15,6 +15,9 @@ public protocol Pill: Equatable, Hashable {
 public enum StackStyle {
     case wrap
     case noWrap
+    /// scrollable gird of items. it is chunked equally by `itemsPerStack`
+    /// TODO: currently it's only horizontal stack. add vertical option
+    case infiniteScrollStack(itemsPerStack: Int)
 }
 
 // MARK: - Pill customizations
@@ -79,9 +82,6 @@ public struct PillOptions {
     /// Whether trailing icon should only be displayed if
     /// the element is selected or not
     public var trailingOnlyWhenSelected: Bool = false
-
-    /// whether the grid is horizontal or vertical
-    public var gridAxis: Axis.Set = .horizontal
 }
 
 // MARK: - Main view
@@ -120,6 +120,10 @@ public struct PillPickerView<T: Pill>: View {
             })
         case StackStyle.wrap:
             FlowStack(options: options, items: items, viewGenerator: { item in
+                PillView(options: options, item: item, selectedPills: $selectedPills)
+            })
+        case let .infiniteScrollStack(chunkSize):
+            InfiniteScrollStack(options: options, items: items, chunkSize: chunkSize, viewGenerator: { item in
                 PillView(options: options, item: item, selectedPills: $selectedPills)
             })
         }
@@ -466,6 +470,44 @@ struct StaticStack<T, V>: View where T: Pill, V: View {
         }
         .frame(height: totalHeight)
         .frame(maxWidth: .infinity)
+    }
+}
+
+// MARK: - InfiniteScrollStack
+
+/// Stack of pills scrollable
+struct InfiniteScrollStack<T, V>: View where T: Pill, V: View {
+    
+    /// Alias for function type generating content
+    typealias ContentGenerator = (T) -> V
+    
+    let options: PillOptions
+    
+    /// Collection of items passed to view
+    var items: [T]
+    
+    /// Chunk size which `items` is divided into
+    var chunkSize: Int
+    
+    /// Content generator function
+    var viewGenerator: ContentGenerator
+    
+    var body: some View {
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .leading, spacing: options.verticalSpacing) {
+                ScrollView(.horizontal, showsIndicators: true) {
+                    ForEach(items.chunked(into: chunkSize), id: \.self) { chunk in
+                        HStack(spacing: options.horizontalSpacing) {
+                            ForEach(chunk, id: \.self) { item in
+                                viewGenerator(item)
+                            }
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        } // <-ScrollView
     }
 }
 

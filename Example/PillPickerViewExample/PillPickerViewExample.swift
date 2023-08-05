@@ -1,3 +1,4 @@
+
 //
 //  PillPickerViewExample.swift
 //  PillPickerViewExample
@@ -17,6 +18,8 @@ struct PillPickerViewExample: App {
         }
     }
 }
+
+#if os(iOS)
 
 // MARK: - Example
 
@@ -121,6 +124,15 @@ struct ExampleBuilder<T, V>: View where T: Pill, V: View {
     }
 }
 
+
+struct PillPickerView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+#endif
+
 /// Sample model conforming to the `Pill` protocol.
 /// An element must have a `title` attribute.
 struct Genre: Pill {
@@ -150,3 +162,4 @@ let genres: [Genre] = [
     Genre(title: "Sports"),
     Genre(title: "Biography")
 ]
+
