@@ -79,6 +79,9 @@ public struct PillOptions {
     /// Whether trailing icon should only be displayed if
     /// the element is selected or not
     public var trailingOnlyWhenSelected: Bool = false
+
+    /// whether the grid is horizontal or vertical
+    public var gridAxis: Axis.Set = .horizontal
 }
 
 // MARK: - Main view

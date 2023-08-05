@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		794A19582A7E364D002A324B /* PreviewGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A19572A7E364D002A324B /* PreviewGrid.swift */; };
 		D4A238012A18DD700081FCAB /* PillPickerViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A238002A18DD700081FCAB /* PillPickerViewExample.swift */; };
 		D4A238052A18DD710081FCAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A238042A18DD710081FCAB /* Assets.xcassets */; };
 		D4A238122A18DE080081FCAB /* PillPickerView in Frameworks */ = {isa = PBXBuildFile; productRef = D4A238112A18DE080081FCAB /* PillPickerView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		794A19572A7E364D002A324B /* PreviewGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGrid.swift; sourceTree = "<group>"; };
 		D4A237FD2A18DD700081FCAB /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A238002A18DD700081FCAB /* PillPickerViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillPickerViewExample.swift; sourceTree = "<group>"; };
 		D4A238042A18DD710081FCAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				D4A238002A18DD700081FCAB /* PillPickerViewExample.swift */,
+				794A19572A7E364D002A324B /* PreviewGrid.swift */,
 				D4A238042A18DD710081FCAB /* Assets.xcassets */,
 			);
 			path = PillPickerViewExample;
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				794A19582A7E364D002A324B /* PreviewGrid.swift in Sources */,
 				D4A238012A18DD700081FCAB /* PillPickerViewExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,8 @@ import PillPickerView
 struct PillPickerViewExample: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            PreviewGrid()
         }
     }
 }
